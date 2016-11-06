@@ -48,7 +48,7 @@ int main()
 	//    Task 4
   
 	int a, b;
-	int c = 0;  // If the number is bigger number is negative , we'll use this to make it positive.
+	int c = 0; 
 	cout << "Enter 2 numbers: " << endl;
 	cin >> a >> b;
   
