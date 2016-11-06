@@ -1,0 +1,90 @@
+// ConsoleApplication1.cpp : Defines the entry point for the console application.
+//
+
+#include "stdafx.h"
+#include <iostream>=
+
+using namespace std;
+
+
+int main()
+{
+
+	//   Task 1
+  
+	int a, b, c, d, e;
+	cout << "Enter 5 numbers:" << endl;
+	cin >> a >> b >> c >> d >> e;
+
+	if (a >= b && a >= c && a >= d && a >= e) cout << "Biggest number is :" << a <<endl;
+	else if (b >= a && b >= c && b >= d && b >= e) cout << "Biggest number is :" << b << endl;
+	else if (c >= a && c >= b && c >= d && c >= e) cout << "Biggest number is :" << c << endl;
+	else if (d >= a && d >= b && d >= c && d >= e) cout << "Biggest number is :" << d << endl;
+	else if (e >= a && e >= b && e >= c && e >= d) cout << "Biggest number is :" << e << endl;
+
+
+
+	//	  Task 2
+  
+	int a, b, c;
+	cout << "Enter 3 numbers :" << endl;
+	cin >> a >> b >> c;
+  
+	if (a > 0 && b > 0 && c > 0) cout << "Product = +" << endl;
+	else if ((a < 0 && b < 0) || (b < 0 && c < 0) || (a < 0 && c < 0)) cout << "Product = +" << endl;
+	else if (a == 0 || b == 0 || c == 0) cout << "Product = 0" << endl;
+	else cout << "Product = -" << endl;
+
+
+	//    Task 3
+  
+	int a, b;
+	cout << "Enter 2 numbers:" << endl;
+	cin >> a >> b;
+  
+	(((a + b) % 2 == 0) ? cout << "Sum * 2 = " << (a + b) * 2 << endl: cout << "Sum / 2 = " << (a + b) / 2);
+
+
+	//    Task 4
+  
+	int a, b;
+	int c = 0;  // If the number is bigger number is negative , we'll use this to make it positive.
+	cout << "Enter 2 numbers: " << endl;
+	cin >> a >> b;
+  
+	(a > b ? c = a : c = b);
+	(c > 0 ? cout << c <<endl : cout << c*(-1)<<endl);
+
+
+
+	//    Task 5
+	int number;
+	cout << "Enter a number between 1 and 9 :" << endl;
+	cin >> number;
+  
+	switch (number)
+		{
+			case 0:
+				cout << "Invalid input." << endl;
+				break;
+			case 1:
+			case 2:
+			case 3: cout << "Output : " << number * 10 << endl;
+				break;
+			case 4:
+			case 5:
+			case 6: cout << "Output : " << number * 100 << endl;
+				break;
+			case 7:
+			case 8:
+			case 9: cout << "Output : " << number * 1000<<endl;
+				break;
+			case 10: cout << "Invalid input." << endl;
+				break;
+
+		}
+
+
+
+    return 0;
+}
