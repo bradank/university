@@ -1,0 +1,35 @@
+// HW3.Task2.cpp : Defines the entry point for the console application.
+//
+
+#include "stdafx.h"
+#include <iostream>
+using namespace std;
+
+
+char Task2(char* string, char symbol)
+{
+	for (int i = 0; string[i] != 0; i++)
+	{
+		if (string[i] == symbol)
+		{
+			cout << symbol << " is in " << i+1 << " position." << endl;
+			cout << "The rest of the string is : ";
+			for (int j = i; string[j] != 0; j++)		//Ако искаме да пропуснем въведения символ 
+			{				        	//j ще е равно на i + 1
+				cout << string[j];
+			}
+			cout << endl;					//Ако символа се повтаря повече от един път 
+		}
+	}
+	return 0;
+}
+
+int main()
+{
+	char text[50];
+	cin.getline(text, 50);
+	char symbol;
+	cin >> symbol;
+	cout << Task2(text, symbol);
+    return 0;
+}
