@@ -19,7 +19,7 @@ int Task1(char* string)
 	if (length%2==1)
 	cout << "Middle char: " << string[length / 2] << endl;
 	else cout<< "Middle char: " << string[length / 2 - 1]<<string[length/2] << endl; // Ако няма точна среда изкарваме 
-                                                                                    // двата средни символа.
+                                                           	                         // двата средни символа.
 	cout << "Last char: " << string[length-1]<<endl;								
 	cout << "String length : ";
 	return length;
