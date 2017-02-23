@@ -1,0 +1,86 @@
+// ConsoleApplication1.cpp : Defines the entry point for the console application.
+//
+
+#include "stdafx.h"
+#include <iostream>
+#include <cstring>
+using namespace std;
+
+struct Point {	//Razmera na strukturata e 4+4+1 = 9, no se zapisvat v nai-blizkiq multiple na 2 po chetno chislo. => 12
+	char c;
+	int x;		//Tova sa chlen-danni
+	int y;
+};
+
+struct Book {
+	char title[100];
+	char author[50];
+	char genre[50];
+	char ISBN[100];
+	int pages;
+	double price;
+};
+
+void bookInfo(Book book, char* string)
+{
+	if (strcmp(book.title, string) == 0)
+	{
+		cout << "Title:" << book.title << endl;
+		cout << "Author:" << book.author << endl;
+		cout << "Genre:" << book.genre << endl;
+		cout << "ISBN:" << book.ISBN << endl;
+		cout << "Pages:" << book.pages << endl;
+		cout << "Price:" << book.price << endl;
+	}
+}
+
+int main()
+{
+	Book* library= new Book[10] ;
+	library[0] = { "","J.K.Rowling","Fantasy","0978as98d79",280,25.60 };
+	library[1] = { "","J.R.R Tolkien","Fantasy","s786da8769a9",500,35.50 };
+
+
+	Book name;
+	cin.getline(name.title, 100);
+	cout << name.title;
+	delete[]library;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    return 0;
+}
+/*
+void initPoint(Point &p, int x, int y) // ako e bez & pred 'p' shte e greshno.
+{
+	p.x = 5;
+	p.y = 6;
+}
+
+struct Point {
+int x;
+int y;
+}
+
+в мейн 
+Point p1,p2;
+p1.x = 5;
+p1.y = 10;
+Point* points 
+
+
+*/
+
