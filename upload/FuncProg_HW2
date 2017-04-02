@@ -1,0 +1,56 @@
+import Data.Char
+sumNumbers ::[Char] -> Integer
+sumNumbers "" = 0
+sumNumbers str = if null w then charToInt y + sumNumbers ys else charToInt w + sumNumbers ws
+ where 
+  (w,ws) = break isDigit str
+  (y,ys) = break isAlpha str
+
+charToInt :: [Char] -> Integer
+charToInt str = toInteger(charToIntHelper ((length str)-1) str)
+ where charToIntHelper n str = if n>=0&& isDigit (head str) then digitToInt(head str)*(10^n) + charToIntHelper (n-1) (tail str) else 0
+
+
+
+pythagoreanTriples :: Integer -> [(Integer,Integer,Integer)]
+pythagoreanTriples n = [(a,b,c) | a<-[1..n],b<-[1..n],c<-[1..n],a<b&&b<c,a^2+b^2==c^2,a+b+c<=n]
+ 
+ 
+normalizeMessage :: [Char] -> [Char]
+normalizeMessage str
+ |null str = []
+ |isDigit(head str) = error "Contains digits"
+ |isLower(head str) = toUpper(head str):normalizeMessage (tail str)
+ |isUpper(head str) = toUpper(head str):normalizeMessage (tail str)
+ |otherwise = normalizeMessage (tail str)
+ 
+ 
+dct = zip['A'..'Z'](['F' .. 'Z'] ++ ['A' .. 'E'])
+encodeSymbol :: [(Char,Char)] -> Char -> Char
+encodeSymbol dct c = head[y | (x,y) <- dct, x==c]
+
+encodeMessage :: [(Char,Char)]->[Char]->[Char]
+encodeMessage dct str = encodeMessageHelper dct (normalizeMessage str)
+ where 
+  encodeMessageHelper dct str   
+   |null str = []
+   |otherwise = encodeSymbol dct (head str):encodeMessageHelper dct (tail str)
+
+reverseEncoding::[(Char,Char)]->[(Char,Char)]
+reverseEncoding dct = [(y,x) | (x,y) <- dct]
+
+decodeMessage::[(Char,Char)]->[Char]->[Char]
+decodeMessage dct str = encodeMessage (reverseEncoding dct) str
+
+
+main :: IO()
+main = do
+ print (sumNumbers "a123b2c56")
+ print (sumNumbers "123a5b123")
+ print (charToInt "123")
+ print (pythagoreanTriples 50)
+ print (normalizeMessage  "The quick brown fox jumps over the lazy dog")
+ print (encodeSymbol dct 'A')
+ print (encodeMessage  dct "The quick brown fox jumps over the lazy dog")
+ print (reverseEncoding dct)
+ print (decodeMessage dct "YMJVZNHPGWTBSKTCOZRUXTAJWYMJQFEDITL")
