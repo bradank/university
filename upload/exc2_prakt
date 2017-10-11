@@ -1,0 +1,67 @@
+// exc2p.cpp : Defines the entry point for the console application.
+//
+
+#include "stdafx.h"
+#include <iostream>
+#include <fstream>
+#include <string>
+
+using namespace std;
+
+
+void PrintEach(int argc, char** argv);
+
+int main(int argc , char** argv)
+{
+	PrintEach(argc, argv);
+    return 0;
+}
+
+void PrintEach(int argc, char** argv)
+{
+
+	for (int j = 1; j < argc; j++)
+	{
+		if (strcmp(argv[j],"-l") == 0)
+		{
+			if (atoi(argv[j + 1]) == 0)
+			{
+				cout << "Please enter a valid argument after -l!";
+				break;
+			}
+			else
+			{
+
+				string line;
+				fstream print(argv[j + 2], ios::in);
+				if (print.is_open())
+				{
+					int count = 0;
+					while (getline(print,line))
+					{
+						if (count == atoi(argv[j + 1])) break;
+						cout << line << endl;
+						count++;
+					}
+					print.close();
+				}
+				j += 2;
+			}
+		}
+		else
+		{
+			string line;
+			fstream print(argv[j], ios::in | ios::beg);
+			if (print.is_open())
+			{
+				while (getline(print, line))
+				{
+					cout << line << endl;
+				}
+				print.close();
+			}
+		}
+
+	}
+}
+
